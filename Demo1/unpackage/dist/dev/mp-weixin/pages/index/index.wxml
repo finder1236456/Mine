@@ -1,0 +1,1 @@
+<view class="box" hover-class="Hbox" hover-stay-time="0"></view><view><navigator url="/pages/demo1/demo1">To Demo1</navigator></view>
