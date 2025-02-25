@@ -1,0 +1,1 @@
+<view><image src="{{a}}" mode="aspectFill" class="pic4"></image></view>

@@ -17,6 +17,13 @@
 			"path" : "pages/demo2/demo2",
 			"style" : 
 			{
+				"navigationBarTitleText" : "..."
+			}
+		},
+		{
+			"path" : "pages/demo3/demo3",
+			"style" : 
+			{
 				"navigationBarTitleText" : ""
 			}
 		}

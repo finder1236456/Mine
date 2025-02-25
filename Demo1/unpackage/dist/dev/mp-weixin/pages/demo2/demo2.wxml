@@ -1,0 +1,1 @@
+<view>{{a}}</view><view>{{b}}</view><view>{{c}}</view><navigator url="/pages/demo3/demo3">跳转demo3</navigator>
