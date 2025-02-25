@@ -2,10 +2,9 @@
 	<view>
 		<swiper indicator-dots indicator-color="rgba(255,255,255,0.3)" 
 		indicator-active-color="#ffffff" circular autoplay interval="2000" vertical>
-			<swiper-item><image src="../../static/pic1.png" mode="aspectFill"></image></swiper-item>
-			<swiper-item><image src="../../static/pic2.png" mode="aspectFill"></image></swiper-item>
-			<swiper-item><image src="../../static/pic4.jpg" mode="aspectFill"></image></swiper-item>
-			<swiper-item><image src="../../static/pic3.webp" mode="aspectFill"></image></swiper-item>
+			<swiper-item><image src="../../static/重庆.jpg" mode="aspectFill"></image></swiper-item>
+			<swiper-item><image src="../../static/重庆6.jpg" mode="aspectFill"></image></swiper-item>
+			<swiper-item><image src="../../static/重庆7.jpg" mode="aspectFill"></image></swiper-item>
 		</swiper>
 	</view>
 	
@@ -13,12 +12,7 @@
 	<navigator url="/pages/demo2/demo2">跳转到demo2</navigator>
 	
 	
-	<view>
-		<image src="../../static/logo.png" mode="" class="pic1"></image>
-		<image src="../../static/pic3.webp" mode="aspectFill" class="pic2"></image>
-		<image src="../../static/pic4.jpg" mode="heightFix" class="pic3"></image>
-		<image src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/uni-app.png" mode="heightFix"></image>
-	</view>
+	
 </template>
 
 <script>
@@ -41,13 +35,14 @@
 	
 swiper{
 	width: 100vw;
-	height: 200px;
-	border:1px solid green;
+	height: 500px;
+	border:1px solid #fff;
 	swiper-item{
 		width: 100%;
 		height: 100%;
 		background: pink;
 		image{
+			
 			width: 100%;
 			height: 100%;
 		}
