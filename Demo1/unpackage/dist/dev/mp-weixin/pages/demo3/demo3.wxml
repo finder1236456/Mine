@@ -1,1 +1,1 @@
-<view><image src="{{a}}" mode="aspectFill" class="pic4"></image></view>
+<view><image src="{{a}}" mode="aspectFill"></image></view><navigator url="/pages/demo4/demo4">跳转demo4</navigator>

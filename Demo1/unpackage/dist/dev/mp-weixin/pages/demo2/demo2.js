@@ -5,10 +5,7 @@ const _sfc_main = {
   setup(__props) {
     let num1 = 6;
     let num2 = common_vendor.ref(1);
-    setInterval(() => {
-      num2.value++;
-      console.log(num2.value);
-    }, 1e3);
+    console.log(num2.value);
     let man = common_vendor.ref({ name: "Kobe", age: 40 });
     man.value.age = 50;
     return (_ctx, _cache) => {

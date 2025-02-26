@@ -6,6 +6,11 @@ if (!Math) {
   "./pages/demo1/demo1.js";
   "./pages/demo2/demo2.js";
   "./pages/demo3/demo3.js";
+  "./pages/demo4/demo4.js";
+  "./pages/demo5/demo5.js";
+  "./pages/demo7/demo7.js";
+  "./pages/demo6/demo6.js";
+  "./pages/demo8/demo8.js";
 }
 const _sfc_main = {
   onLaunch: function() {
