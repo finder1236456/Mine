@@ -1,7 +1,10 @@
 <template>
 	<view class="out">
-		<input type="text" v-model="iptnum" @focus="isActive = true" @blur="isActive = false"/>
+		<input type="text" v-model="iptnum" @focus="isActive = true" @blur="isActive = false" />
 		<image src="../../static/y.gif" class="pic" :class="isActive?'active':''"></image>
+	</view>
+	<view>
+		预览:{{iptnum}}
 	</view>
 </template>
 
@@ -9,6 +12,7 @@
 	import { ref } from 'vue';
 	const iptnum = ref("");
 	const isActive = ref(false);
+	
 /*	function onFocus(e) {
 		isActive.value = true;
 	}
