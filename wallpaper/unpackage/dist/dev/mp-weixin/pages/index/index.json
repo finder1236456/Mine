@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "极速壁纸",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "uni-icons": "../../components/uni-icons/uni-icons",
+    "common-title": "../../components/common-title/common-title",
+    "theme-item": "../../components/theme-item/theme-item"
+  }
+}

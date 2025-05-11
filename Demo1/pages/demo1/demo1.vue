@@ -21,21 +21,21 @@
 
 <style lang="scss">
 .pic1{
-	width: 150px;
-	height: 150px;
+	width: 150rpx;
+	height: 150rpx;
 }
 .pic2{
-	width: 200px;
-	height: 200px;
+	width: 200rpx;
+	height: 200rpx;
 }
 .pic3{
-	height: 300px;
+	height: 300rpx;
 }
 	
 	
 swiper{
 	width: 100vw;
-	height: 500px;
+	height: 500rpx;
 	border:1px solid #fff;
 	swiper-item{
 		width: 100%;

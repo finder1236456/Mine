@@ -1,0 +1,59 @@
+<template>
+	<view class="container">
+		<view class="layout">
+			<view class="box" v-for="item in pets" :key="item.id">
+				<view class="pic">
+					<image :src="item.url" mode="widthFix"></image>
+				</view>
+				<view class="text">
+					{{item.width}}*{{item.height}}
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script setup>
+	import { ref } from 'vue';
+	const pets = ref([]);
+	
+	function network(){
+		uni.request({
+			url:"https://api.thecatapi.com/v1/images/search",
+			data:{
+				limit: 10
+			}
+		}).then(res=>{
+			console.log(res.data);
+			pets.value = res.data;
+		})
+	}
+	
+	network();
+</script>
+
+<style lang="scss" scoped>
+.container{
+	display: flex;
+	justify-content: center;
+	.layout{
+		padding: 50rpx;
+		.box{
+			display: flex;
+			justify-content: center;
+			margin-bottom: 60rpx;
+			box-shadow: 0 10rpx 30rpx rgba(0, 0, 0,0.08);
+			border-radius: 10rpx;
+			overflow: hidden;
+			.text{
+				bottom: 10px;
+			}
+			.pic{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}
+</style>
