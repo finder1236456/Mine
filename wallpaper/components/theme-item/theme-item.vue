@@ -1,12 +1,12 @@
 <template>
 	<view class="themeItem">
-		<navigator url="/pages/classlist/classlist" class="box" v-if="!isMore">
-			<image class="pic" src="/common/image/classify1.jpg" mode="aspectFill"></image>
+		<navigator :url="'/pages/classlist/classlist?id='+item._id+'&name='+item.name" class="box" v-if="!isMore">
+			<image class="pic" :src="item.picurl" mode="aspectFill"></image>
 			<view class="mask">
-				明星美女
+				{{item.name}}
 			</view>
 			<view class="tab">
-				三天前更新
+				{{compareTimestamp(item.updateTime)}}前更新
 			</view>
 		</navigator>
 		
@@ -23,12 +23,23 @@
 </template>
 
 <script setup>
-	defineProps({
-		isMore:{
-			type:Boolean,
-			default:false
-		}
-	})
+import {compareTimestamp} from "@/utils/common.js"
+defineProps({
+  isMore: {
+    type: Boolean,
+    default: false
+  },
+  item: {
+    type: Object,
+    default() {
+      return {
+        name: "默认名称",
+        picurl: "../../common/image/classify1.jpg",
+        updateTime: Date.now() - 1000 * 60 * 60 * 5
+      }
+    }
+  }
+})
 </script>
 
 <style lang="scss" scoped>

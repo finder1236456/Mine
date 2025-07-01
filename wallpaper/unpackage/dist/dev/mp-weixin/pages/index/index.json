@@ -2,6 +2,7 @@
   "navigationBarTitleText": "极速壁纸",
   "navigationStyle": "custom",
   "usingComponents": {
+    "custom-nav-bar": "../../components/custom-nav-bar/custom-nav-bar",
     "uni-icons": "../../components/uni-icons/uni-icons",
     "common-title": "../../components/common-title/common-title",
     "theme-item": "../../components/theme-item/theme-item"

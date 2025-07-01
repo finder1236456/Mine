@@ -7,7 +7,9 @@
 		</swiper>
 		
 		<view class="mask" v-if="maskState">
-			<view class="goBack"></view>
+			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
+				<uni-icons type="back" color="#fff" size="20"></uni-icons>
+			</view>
 			<view class="count">3 / 9</view>
 			<view class="time">11:55</view>
 			<view class="date">
@@ -19,7 +21,7 @@
 					<view class="text">信息</view>
 				</view>
 				
-				<view class="box">
+				<view class="box" @click="clickScore">
 					<uni-icons type="info" size="28"></uni-icons>
 					<view class="text">5分</view>
 				</view>
@@ -95,7 +97,13 @@
 							</text>
 							<view class="value tabs">
 								<view class="tab">
-									标签名
+									写真
+								</view>
+								<view class="tab">
+									女星
+								</view>
+								<view class="tab">
+									高赞
 								</view>
 							</view>
 						</view>
@@ -109,25 +117,66 @@
 			</view>
 		</uni-popup>
 		
+		<uni-popup ref="scorePopup" :is-mask-click="false">
+			<view class="scorePopup">
+				<view class="popHeader">
+					<view class="title">
+						壁纸评分
+					</view>
+					<view class="close" @click="clickScoreClose">
+						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+					</view>
+				</view>
+				
+				<view class="content">
+					<uni-rate v-model="userScore" allow-half></uni-rate>
+					<text class="text">{{userScore}}分</text>
+				</view>
+				<view class="footer">
+					<button @click="submitScore" :disabled="!userScore" type="default" size="mini" plain>确认评分</button>
+				</view>
+			</view>
+		</uni-popup>
+		
+		
+		
 	</view>
 </template>
 
 <script setup>
+import {getStatusBarHeight} from "@/utils/system.js"
 import { ref } from 'vue';
 
-	const maskState = ref(true);
-	const infoPopup =ref(null);
-
+const maskState = ref(true);
+const infoPopup = ref(null);
+const scorePopup = ref(null); // <-- Add this line
+const userScore = ref(0);
+	//遮罩层状态
 	const maskChange = ()=>{
 		maskState.value = !maskState.value
 	}
-	
+	//点击info弹窗
 	const clickInfo = ()=>{
 		infoPopup.value.open()
 	}
-	
+	//点击关闭信息弹窗
 	const clickInfoClose = ()=>{
-		infoPopup.value = !infoPopup.value
+		infoPopup.value.close();
+	}
+	//评分弹窗
+	const clickScore = ()=>{
+		scorePopup.value.open();
+	}
+	//关闭评分
+	const clickScoreClose = ()=>{
+		scorePopup.value.close();
+	}
+	//确认评分
+	const submitScore=()=>{
+		
+	}
+	const goBack=()=>{
+		uni.navigateBack()
 	}
 </script>
 
@@ -156,7 +205,18 @@ import { ref } from 'vue';
 			width: fit-content;
 		}
 		.goBack{
-			
+			width: 38px;
+			height: 38px;
+			background: rgba(0, 0, 0, 0.5);
+			left: 30rpx;
+			margin-left: 0;
+			border-radius: 100px;
+			top: 0;
+			backdrop-filter: blur(10rpx);
+			border: 1rpx solid rgba(255, 255, 255, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		.count{
 			top: 10vh;
@@ -204,23 +264,25 @@ import { ref } from 'vue';
 		}
 	}
 }	 
+
+	.popHeader{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.title{
+			color: $uni-text-color-grey;
+			font-size: 26rpx;
+		}
+		.close{
+			padding: 6rpx;
+		}
+	}
 	.infoPopup{
 		background: #fff;
 		padding: 30rpx;
 		border-radius: 30rpx 30rpx 0 0;
 		overflow: hidden;
-		.popHeader{
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			.title{
-				color: $uni-text-color-grey;
-				font-size: 26rpx;
-			}
-			.close{
-				padding: 6rpx;
-			}
-		}
+		
 		scroll-view{
 			max-height: 60vh;
 			.content{
@@ -279,4 +341,32 @@ import { ref } from 'vue';
 		}
 		
 	}
+
+	.scorePopup{
+		background: #fff;
+		padding: 30rpx;
+		width: 70vw;
+		border-radius: 30rpx;
+		.content{
+			padding: 30rpx 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.text{
+				color: #FFCA3E;
+				padding-left: 10rpx;
+				width: 80rpx;
+				line-height: 1em;
+				text-align: right;
+			}
+		}
+		.footer{
+			padding: 10rpx 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+
 </style>

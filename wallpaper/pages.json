@@ -35,7 +35,22 @@
 				"navigationBarTitleText" : "预览",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path" : "pages/notice/notice",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/notice/detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

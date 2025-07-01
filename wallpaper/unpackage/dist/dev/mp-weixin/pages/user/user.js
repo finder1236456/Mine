@@ -12,7 +12,7 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache) {
   return {
-    a: common_assets._imports_0$1,
+    a: common_assets._imports_0,
     b: common_vendor.p({
       type: "download",
       size: "20",

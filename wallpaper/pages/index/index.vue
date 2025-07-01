@@ -1,15 +1,10 @@
 <template>
 	<view class="HomeLayout PageBg">
+		<custom-nav-bar title="推荐"></custom-nav-bar>
 		<view class="banner">
-			<swiper circular indicator-dots indicator-color="rgba(0,0,0,0.5)" indicator-active-color="#c8c7cc" autoplay="">
-				<swiper-item>
-					<image src="/common/image/banner1.jpg" mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image src="/common/image/banner2.jpg" mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image src="/common/image/banner3.jpg" mode="aspectFill"></image>
+			<swiper circular indicator-dots indicator-color="rgba(0,0,0,0.5)" indicator-active-color="#c8c7cc" autoplay>
+				<swiper-item v-for="item in bannerList" :key="item._id">
+					<image :src="item.picurl" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -18,11 +13,6 @@
 			<view class="left">
 				<uni-icons type="sound-filled" size="24" color="#b3e0f2"></uni-icons>
 				<text class="text">公告</text>
-			</view>
-			<view class="center">
-				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item v-for="item in 4">文字内容</swiper-item>
-				</swiper>
 			</view>
 			<view class="right">
 			<uni-icons type="right" size="24" color="#cbcbcb"></uni-icons>
@@ -41,9 +31,9 @@
 				</template>
 			</common-title>
 			<view class="content">
-				<scroll-view scroll-x class="scroll-container">
-					<view class="box" v-for="item in 8">
-						<image src="/common/image/preview2.jpg" mode="aspectFill"></image>
+				<scroll-view scroll-x class="scroll-container" >
+					<view class="box" v-for="item in randomList" @click="goPreview">
+						<image :src="item.smallPicurl" :key="item._id" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -61,7 +51,8 @@
 		</common-title>
 		
 		<view class="content">
-			<theme-item v-for="item in 8"> </theme-item>
+			<theme-item v-for="item in classifyList" :key="item._id" :item="item">
+				</theme-item>
 			<theme-item :isMore="true"> </theme-item>
 		</view>
 		
@@ -71,8 +62,42 @@
 </template>
 
 <script setup>
+	import { ref } from 'vue';
+	import {apiGetBanner,apiGetRandom,apiGetClassify} from '@/api/apis.js'
+	
+	const bannerList = ref([]);
+	const randomList =ref([]);
+	const classifyList =ref([]);
+	
+	const getBanner =async ()=>{
+		let res = await apiGetBanner();
+		bannerList.value = res.data.data;
+	}
 	
 	
+	const getDayRandom =async ()=>{
+		let res = await apiGetRandom();
+		randomList.value = res.data.data;
+	}
+	
+	const getClassify =async()=>{
+		let res = await apiGetClassify({
+			select:true
+		});
+		classifyList.value = res.data.data;
+	}
+	
+	
+	const goPreview = ()=>{
+		uni.navigateTo({
+			url:"/pages/preview/preview"
+		})
+	}
+	
+	
+	getBanner();
+	getDayRandom();
+	getClassify();
 </script>
 
 <style lang="scss">
