@@ -1,0 +1,1 @@
+{"version":3,"file":"utils.js","sources":["D:/HBuilderX/plugins/uniapp-cli-vite/uniPage:/dXRpbHMvdXRpbHMudnVl"],"sourcesContent":["import MiniProgramPage from 'E:/uniappTraining/Mine/wallpaper/utils/utils.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;AACA,GAAG,WAAW,eAAe;"}
